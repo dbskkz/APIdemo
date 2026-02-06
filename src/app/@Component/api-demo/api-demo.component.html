@@ -1,0 +1,133 @@
+<div class="d-flex">
+  <div class="left">
+
+    <h1>天氣API引用作業</h1>
+    <label>選擇區域:</label>
+    <select
+      [(ngModel)]="selsctlocation"
+      (ngModelChange)="changeloca($event)"
+      [compareWith]="compareLocation"
+    >
+      <option [ngValue]="undefined" disabled selected>請選擇地區</option>
+      @for (loc of location; track loc.LocationName) {
+        <option [ngValue]="loc">{{ loc.LocationName }}</option>
+        <!-- loc?.LocationName->延遲顯示，確認資料進來後才出現 -->
+      }
+    </select>
+
+    <p>{{ selectedLocation?.LocationName || "null" }}的天氣資料</p>
+
+    <strong>目前時間:{{ Time$ | async | date: "yyyy-MM-dd HH:mm:ss" }}</strong>
+
+      <ul>
+      @for (item of weather; track item.ElementName) {
+        <li >
+        <strong>
+        <input
+          type="checkbox"
+          [(ngModel)]="item.isChecked"
+          (change)="updateDisplay()"
+        class="EN"/>{{ item.ElementName }}
+      </strong>
+      </li>
+      }
+    </ul>
+
+  </div>
+
+  <div class="right">
+    @for (item of weather; track item.ElementName) {
+      @if (item.isChecked) {
+        <!-- 體感溫度 -->
+        @if (item.Time?.[0]?.ElementValue?.[0]?.ApparentTemperature) {
+          <span class="item">
+            {{ item.ElementName }}:{{
+              item.Time?.[0]?.ElementValue?.[0]?.ApparentTemperature
+            }}°C,
+          </span>
+        }
+        <!-- 顯示露點溫度 -->
+        @if (item.Time?.[0]?.ElementValue?.[0]?.DewPoint) {
+          <span class="item">
+            {{ item.ElementName }}:{{
+              item.Time?.[0]?.ElementValue?.[0]?.DewPoint
+            }}°C,
+          </span>
+        }
+        <!-- 相對濕度 -->
+        @if (item.Time?.[0]?.ElementValue?.[0]?.RelativeHumidity) {
+          <span class="item">
+            {{ item.ElementName }}:{{
+              item.Time?.[0]?.ElementValue?.[0]?.RelativeHumidity
+            }}%,
+          </span>
+        }
+        <!-- 風速 -->
+        @if (item.Time?.[0]?.ElementValue?.[0]?.WindSpeed) {
+          <span class="item">
+           {{ item.ElementName }}:{{
+              item.Time?.[0]?.ElementValue?.[0]?.WindSpeed
+            }}級,
+          </span>
+        }
+        <!-- 風向 -->
+        @if (item.Time?.[0]?.ElementValue?.[0]?.WindDirection) {
+          <span class="item">
+            {{ item.ElementName }}:{{
+              item.Time?.[0]?.ElementValue?.[0]?.WindDirection
+            }}
+          </span>
+        }
+        <!-- 舒適度指數 -->
+        @if (item.Time?.[0]?.ElementValue?.[0]?.ComfortIndexDescription) {
+          <span class="item">
+            {{ item.ElementName }}:{{
+              item.Time?.[0]?.ElementValue?.[0]?.ComfortIndex
+            }},{{ item.Time?.[0]?.ElementValue?.[0]?.ComfortIndexDescription }},
+          </span>
+        }
+
+
+        <!-- 3小時降雨機率 -->
+        @if (item.Time?.[0]?.ElementValue?.[0]?.ProbabilityOfPrecipitation) {
+          <div class="Prob">
+            三小時內有{{
+              item.Time?.[0]?.ElementValue?.[0]?.ProbabilityOfPrecipitation
+            }}%機會下雨
+          </div>
+        }
+        <!-- 天氣現象 -->
+        @if (item.Time?.[0]?.ElementValue?.[0]?.Weather) {
+
+          @if(item.Time?.[0]?.ElementValue?.[0]?.Weather=='晴天'){
+          <div class="sun"></div>
+          }
+      @else if (item.Time?.[0]?.ElementValue?.[0]?.Weather=='多雲') {
+          <div class="could"></div>
+          }
+      @else if (item.Time?.[0]?.ElementValue?.[0]?.Weather=='陰天') {
+          <div class="winder"></div>
+          }
+     @else if (item.Time?.[0]?.ElementValue?.[0]?.Weather=='有雨') {
+          <div class="rain"></div>
+          }
+        }
+        <!-- 判斷顯示溫度 -->
+        @if (item.Time?.[0]?.ElementValue?.[0]?.Temperature) {
+          <div class="temp">{{item.Time?.[0]?.ElementValue?.[0]?.Temperature
+            }}°C
+          </div>
+        }
+        <!-- 天氣預報綜合描述 -->
+        @if (item.Time?.[0]?.ElementValue?.[0]?.WeatherDescription) {
+          <div class="ption">
+            綜合描述:{{
+              item.Time?.[0]?.ElementValue?.[0]?.WeatherDescription
+            }}
+          </div>
+        }
+      }
+
+    }
+  </div>
+</div>

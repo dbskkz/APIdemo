@@ -1,0 +1,98 @@
+.left{
+  width: 22%;
+  height: 100vh;
+  padding-top: 20px;
+  padding-left: 20px;
+  background: aquamarine;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  color: rgba(125, 26, 26, 0.842)
+}
+.check{
+  width: 30%;
+  background-color: (0,0,0,0.5);
+
+}
+.right{
+  width: 78%;
+  height: 100vh;
+  padding-top: 20px;
+  padding-left: 20px;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaUCfnHrbyU7rfZuBxGexDfZDLxev2V8T3rA&s");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.sun{
+width:300px ;
+height: 300px;
+background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcFR8hk7AWuC63LIx6iM2d5LnG025kwowNiA&s");
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:200px;
+right: 30%;
+}
+.winder{
+//陰天
+width:300px ;
+height: 300px;
+background-image: url("https://www.moedict.tw/%E9%99%B0%E5%A4%A9.png");
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:200px;
+right: 30%;
+}
+.could{
+width:300px ;
+height: 300px;
+background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx0mJ5DKPUPw6TVyFsmiS8JioeZu-UTj_PDg&s");
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+right: 30%;
+top: 200px;
+}
+.rain{
+width:300px ;
+height: 300px;
+background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2KF_-AcrS2jLGn7hasKXfGosd8upCoi5clQ&s");
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:200px;
+right: 30%;
+}
+.temp{
+  font-size: 200px;
+  position: absolute;
+  top:200px;
+  left: 5%;
+}
+.ption{
+  font-size: 42px;
+  position: absolute;
+  bottom: 20px;
+
+}
+.Prob{
+  width: 260px;
+  height: 200px;
+  font-size: 35px;
+  padding: 20px;
+  // border: 1px solid;
+  border-radius: 10px;
+  position: absolute;
+  right: 30px;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0Fi_njB64WiVbHksQfT1uUYoaylistr6HyA&s");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.item{
+  font-size: 25px;
+}
+
+.EN{
+  margin-bottom: 20px;
+}

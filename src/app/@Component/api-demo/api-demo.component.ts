@@ -25,7 +25,7 @@ selsctlocation: any;
    selectedLocation: any = undefined;
   ngOnInit(): void {
     this.htp.getApi(
-      'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-065?Authorization=CWA-7D6724DB-2CFD-4706-8D7A-E559D8D80487&limit=5')
+      'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-089?Authorization=CWA-7D6724DB-2CFD-4706-8D7A-E559D8D80487')
     .subscribe((res:any)=>{
       console.log(res);
       /*
